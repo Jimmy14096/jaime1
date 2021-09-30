@@ -1,5 +1,4 @@
 //https://www.eclipse.org/paho/clients/js/
-var cnt=0;
 
 function historial1(){	
 	//alert("led off");
@@ -39,7 +38,7 @@ function historial1(){
     // Once a connection has been made, make a subscription and send a message.
     console.log("Conectado...");
 	
-    client.subscribe("jfjacome.fie@unach.edu.ec/led");
+ 
     client.subscribe("jfjacome.fie@unach.edu.ec/historial");
     message = new Paho.MQTT.Message("hola desde la web");
     message.destinationName = "jfjacome.fie@unach.edu.ec/historial";
@@ -65,19 +64,15 @@ function historial1(){
   function onMessageArrived(message) {
     console.log("onMessageArrived:"+message.payloadString);
 	  sms=message.payloadString;
-	  numero=sms.length;
 	
 	    if(sms[7]=="1"){
 	   document.getElementById("historial1").innerHTML=sms;
 	  }
 	  
-	  if(sms[7]=="1"){
-	   document.getElementById("historial1").innerHTML=sms;
+	  if(sms[7]=="2"){
+	   document.getElementById("historial2").innerHTML=sms;
 	  }
-	   if(sms[7]=="2"){
-	   document.getElementById("historial2").innerHTML=message.payloadString;
-	  }
-	   
+	
 		  
   }
   
